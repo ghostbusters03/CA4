@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build Docker image using Dockerfile
+                    docker.build('my-python-app')
+                }
+            }
+        }
+        stage('Run Docker Compose') {
+            steps {
+                sh 'docker-compose up -d'
+            }
+        }
+    }
+}
